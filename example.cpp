@@ -16,9 +16,16 @@ int example(std::ostream *output, const std::string &host, const unsigned &port)
 {
   // Open connection to the configurable data service.
   Client client(host, port);
-  std::cout
-    << "Connected to " << host << ":" << port
-    << Newline;
+  if (client.isConnected()) {
+    std::cout
+      << "Connected to " << host << ":" << port
+      << Newline;
+  } else {
+    std::cout
+      << "Failed to connect to Motion Service on " << host << ":" << port
+      << Newline;
+    return 1;
+  }
 
   // Request the channels that we want from every connected device. The full
   // list is available here:
@@ -89,5 +96,5 @@ int main(int argc, char **argv)
 {
   std::ofstream fout("out.csv", std::ios_base::binary | std::ios_base::out);
 
-  return example(&fout, "", 32076);
+  return example(&fout, "127.0.0.1", 32076);
 }
