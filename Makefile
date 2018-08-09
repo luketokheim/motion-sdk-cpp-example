@@ -1,7 +1,7 @@
 TARGET   = example
 OBJ      = example.o Client.o Format.o
 CPP      = g++
-CPPFLAGS = -std=c++0x -DMOTION_SDK_NOTHROW=1 -Isdk/cpp
+CPPFLAGS = -std=c++11 -DMOTION_SDK_NOTHROW=1 -Isdk/cpp
 LDFLAGS  =
 
 all: $(TARGET)
